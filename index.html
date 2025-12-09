@@ -3,6 +3,20 @@
 
 <head>
     <script>
+        // Check for reload
+        try {
+            if (performance.getEntriesByType("navigation")[0].type === 'reload') {
+                sessionStorage.removeItem('isLoggedIn');
+                window.location.href = 'login.html';
+            }
+        } catch (e) {
+            console.log("Navigation API not supported");
+        }
+
+        // Check if user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
         function checkLogin() {
             if (sessionStorage.getItem('isLoggedIn') !== 'true') {
                 window.location.href = 'login.html';
