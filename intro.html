@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        #next-btn {
+            margin-top: 2rem;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            text-decoration: none;
+        }
+
+        #next-btn:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+
+<body>
+    <video id="intro-video" controls autoplay>
+        <source src="Kanika_bhatt/Karthik_Introduction.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <a id="next-btn" href="index.html">Next &rarr;</a>
+
+    <script>
+        const video = document.getElementById('intro-video');
+        const nextBtn = document.getElementById('next-btn');
+
+        video.addEventListener('ended', () => {
+            nextBtn.style.opacity = '1';
+        });
+    </script>
+</body>
+
+</html>
